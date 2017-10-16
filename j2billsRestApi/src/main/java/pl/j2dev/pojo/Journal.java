@@ -6,8 +6,6 @@ import java.sql.Timestamp;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Journal {
-
-	
 	
 	long id;
     int personId;
@@ -21,19 +19,29 @@ public class Journal {
     @JsonIgnore
     Account account;
 
-    @Override
-    public String toString() {
-        return "Journal{" +
-                "id=" + id +
-                ", person=" + person +
-                ", account=" + account +
-                ", value=" + value +
-                ", description='" + description + '\'' +
-                ", timestamp=" + timestamp +
-                '}';
-    }
+    
 
-    public long getId() {
+    @Override
+	public String toString() {
+		return "Journal [id=" + id + ", personId=" + personId + ", accountId=" + accountId + ", value=" + value
+				+ ", description=" + description + ", timestamp=" + timestamp + ", person=" + person + ", account="
+				+ account + "]";
+	}
+    
+    
+
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) return true;
+	    if (obj == null) return false;
+	    if (getClass() != obj.getClass()) return false;
+	    Journal journal = (Journal) obj;
+	    return this.id == journal.getId();
+	}
+
+
+
+	public long getId() {
         return id;
     }
 
