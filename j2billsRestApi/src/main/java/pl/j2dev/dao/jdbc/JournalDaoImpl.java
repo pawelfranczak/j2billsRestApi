@@ -26,9 +26,6 @@ public class JournalDaoImpl implements IDao<Journal>{
     @Autowired
     AccountDaoImpl accountDao;
     
-    @Autowired
-    PersonDaoImpl personDao;
-    
     List<Journal> journalCache = new LinkedList<Journal>();
     final int queueSize = 512;
     
