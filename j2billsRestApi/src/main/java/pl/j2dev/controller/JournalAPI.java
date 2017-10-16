@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import pl.j2dev.pojo.Account;
 import pl.j2dev.pojo.Journal;
+import pl.j2dev.pojo.JournalMovement;
+import pl.j2dev.service.AccountService;
 import pl.j2dev.service.JournalService;
 
 
@@ -36,5 +39,10 @@ public class JournalAPI {
 	public @ResponseBody Journal addToJournal(@RequestBody Journal journal) {
 		return journalService.createJournalEntry(journal);
 	}
-
+	
+	@RequestMapping(path = "/createMovement/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public @ResponseBody JournalMovement makeJournalMovement(@RequestBody JournalMovement jm) {
+		return journalService.createJournalMovement(jm);
+	}
+	
 }
