@@ -21,6 +21,10 @@ public class AccountAPI {
 	@Autowired
 	AccountService accountService;
 
+	
+	/**
+	 * @return list of accounts
+	 */
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody List<Account> getAllAccountJSON() {
 		return accountService.getListOfAllObjects();
@@ -28,7 +32,6 @@ public class AccountAPI {
 
 	@RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody Account getAccountJSON(@PathVariable("id") long id) {
-		System.out.println("Zwracam jsona");
 		return accountService.getObjectById(id);
 	}
 
@@ -37,10 +40,5 @@ public class AccountAPI {
 		return accountService.createObject(account);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public @ResponseBody List<Account> updateAccountJSON(@RequestBody Account account) {
-		// TODO update
-		return null;
-	}
 
 }
