@@ -3,6 +3,8 @@ package pl.j2dev.pojo;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Journal {
 	
 	long id;
@@ -12,7 +14,10 @@ public class Journal {
     String description;
     Timestamp timestamp;
     
+    @JsonIgnore
     Person person;
+    
+    @JsonIgnore
     Account account;
 
     @Override
