@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pl.j2dev.dao.jdbc.PersonDaoImpl;
-import pl.j2dev.pojo.Account;
 import pl.j2dev.pojo.Person;
 
 @Service

@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import pl.j2dev.pojo.Account;
 import pl.j2dev.pojo.Journal;
 import pl.j2dev.pojo.JournalMovement;
-import pl.j2dev.service.AccountService;
 import pl.j2dev.service.JournalService;
 
 

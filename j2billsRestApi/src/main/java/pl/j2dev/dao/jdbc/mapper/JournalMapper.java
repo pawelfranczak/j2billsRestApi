@@ -3,14 +3,9 @@ package pl.j2dev.dao.jdbc.mapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import pl.j2dev.dao.IDao;
-import pl.j2dev.dao.jdbc.AccountDaoImpl;
-import pl.j2dev.dao.jdbc.PersonDaoImpl;
-import pl.j2dev.pojo.Account;
 import pl.j2dev.pojo.Journal;
 
 @Repository
