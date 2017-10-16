@@ -26,12 +26,12 @@ public class PersonAPI {
 		return personService.getObjectById(id);
 	}
 	
-	@RequestMapping(path = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody List<Person> getListOfAllObjects() {
 		return personService.getListOfAllObjects();
 	}
 
-	@RequestMapping(path = "/", method = RequestMethod.POST, consumes =  MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(method = RequestMethod.POST, consumes =  MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody Person createNewPerson(@RequestBody Person person) {
 		return personService.createNewPersonInDB(person);
 	}
