@@ -5,7 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,27 +19,34 @@ import pl.j2dev.dao.IDao;
 import pl.j2dev.dao.jdbc.mapper.AccountMapper;
 import pl.j2dev.pojo.Account;
 
-/**
- * Created by pfranczak on 18.08.2017.
- */
+
 @Repository
 public class AccountDaoImpl implements IDao<Account> {
 
     @Autowired
     private JdbcTemplate jdbcTemplateObject;
+    
+
+	Map<Long, Account> accountCache = new HashMap<Long, Account>();
 
     @Override
     public List<Account> getList() {
         final String SQL = "SELECT * FROM account";
         List<Account> list = jdbcTemplateObject.query(SQL, new AccountMapper());
+        for (Account account : list) {
+        	accountCache.put(account.getId(), account);
+        }
         return list;
     }
 
     @Override
     public Account getById(long id) {
         final String SQL = "SELECT * FROM account WHERE id = ?";
-        Account account = jdbcTemplateObject.queryForObject(SQL, new AccountMapper(), id);
-        return account;
+        if (!accountCache.containsKey(id)) {
+            Account account = jdbcTemplateObject.queryForObject(SQL, new AccountMapper(), id);
+            accountCache.put(id, account);
+        }
+        return accountCache.get(id);
     }
 
     @Override
