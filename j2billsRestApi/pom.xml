@@ -4,7 +4,7 @@
 	<groupId>pl.j2dev</groupId>
 	<artifactId>j2billsRestApi</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>j2billsRestApi Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
@@ -26,7 +26,7 @@
 			<artifactId>j2billsService</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<!-- misc -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -53,6 +53,8 @@
 			<version>${springframework.version}</version>
 		</dependency>
 	</dependencies>
+
+
 
 	<build>
 		<finalName>j2billsRestApi</finalName>
