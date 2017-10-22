@@ -33,6 +33,11 @@ public class JournalAPI {
 		return journalService.getListObjects(limit, offset);
 	}
 	
+	@RequestMapping(path = "/{limit}/{offset}/{accountId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public @ResponseBody List<Journal> getJournalList(@PathVariable("limit") int limit, @PathVariable("offset") int offset, @PathVariable("accountId") long accountId) {
+		return journalService.getListObjects(limit, offset, accountId);
+	}
+	
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody Journal addToJournal(@RequestBody Journal journal) {
 		return journalService.createJournalEntry(journal);
@@ -41,6 +46,16 @@ public class JournalAPI {
 	@RequestMapping(path = "/createMovement/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody JournalMovement makeJournalMovement(@RequestBody JournalMovement jm) {
 		return journalService.createJournalMovement(jm);
+	}
+	
+	@RequestMapping(path = "/count/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public @ResponseBody long getCountOfJournalsEntries() {
+		return journalService.getCountOfJournalsEntries();
+	}
+	
+	@RequestMapping(path = "/count/{accountId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public @ResponseBody long getCountOfJournalsEntries(@PathVariable("accountId") long accountId) {
+		return journalService.getCountOfJournalsEntries(accountId);
 	}
 	
 }
